@@ -51,6 +51,7 @@ public class BigExplosion extends Explosion {
         if (this.size < 0.1) {
             return false;
         }
+        boolean nether = level.getDimension() == Level.DIMENSION_NETHER;
         Vector3 vector = new Vector3(0, 0, 0);
         Vector3 vBlock = new Vector3(0, 0, 0);
         int mRays = 15;
@@ -76,7 +77,7 @@ public class BigExplosion extends Explosion {
                             }
                             Block block = this.level.getBlock(vBlock);
                             if (block.getId() != 0) {
-                                if (block.getId() == Block.BEDROCK) {
+                                if (block.getId() == Block.BEDROCK && vBlock.y > 3 && (!nether || vBlock.y != 127)) {
                                     blastForce -= 1.89;
                                 } else {
                                     blastForce -= (block.getResistance() / 5 + 0.3d) * stepLen;
