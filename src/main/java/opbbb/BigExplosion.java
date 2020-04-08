@@ -76,7 +76,7 @@ public class BigExplosion extends Explosion {
                             }
                             Block block = this.level.getBlock(vBlock);
                             if (block.getId() != 0) {
-                                if (block.getId() == Block.BEDROCK) {
+                                if (block.getId() == Block.BEDROCK || block.getId() == Block.END_PORTAL_FRAME) {
                                     blastForce -= 1.89;
                                 } else {
                                     blastForce -= (block.getResistance() / 5 + 0.3d) * stepLen;
@@ -150,7 +150,7 @@ public class BigExplosion extends Explosion {
                     }
                     ((BlockEntityChest) chest).getInventory().clearAll();
                 }
-            } else if (Math.random() * 100 < yield && block.getId() != Block.BEDROCK) {
+            } else if (Math.random() * 100 < yield && block.getId() != Block.BEDROCK && block.getId() != Block.END_PORTAL_FRAME) {
                 for (Item drop : block.getDrops(air)) {
                     this.level.dropItem(block.add(0.5, 0.5, 0.5), drop);
                 }
