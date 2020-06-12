@@ -78,7 +78,7 @@ public class BigExplosion extends Explosion {
                             }
                             Block block = this.level.getBlock(vBlock);
                             if (block.getId() != 0) {
-                                if (block.getId() == Block.BEDROCK && vBlock.y > 3 && (!nether || vBlock.y != 127)) {
+                                if (block.getId() == Block.BEDROCK && vBlock.y > 4 && (!nether || vBlock.y != 127)) {
                                     blastForce -= 1.89;
                                 } else {
                                     blastForce -= (block.getResistance() / 5 + 0.3d) * stepLen;
